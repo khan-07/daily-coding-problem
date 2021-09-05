@@ -7,22 +7,20 @@
 #
 # You can modify the input array in-place.
 def find_minimum(array):
-    missing = array[0] - 1
-    max_positive = array[0]
     for idx, val in enumerate(array):
-        if 0 < val and val == missing:
-            missing = val - 1
-        elif 0 < val and val != missing:
-            if not missing < val -1:
-                 missing = val -1
 
-        if max_positive < val:
-            max_positive = val
+        if not idx == len(array) - 1:
+            print(array[idx], array[idx + 1], val, array)
 
-    return missing if missing != 0 else max_positive + 1
+        if (not idx == len(array) - 1) and (array[idx + 1] > val):
+            temp = array[idx + 1]
+            array[idx + 1] = val
+            array[idx] = temp
+
+    print(array)
 
 
-print(find_minimum([3, 4, -1, 1]))
-print(find_minimum([1, 2, 0]))
-print(find_minimum([5, 6, -1, 2]))
-print(find_minimum([6,58, -1,-2,1,69,2]))
+# print(find_minimum([3, 4, -1, 1]))
+# print(find_minimum([1, 2, 0]))
+# print(find_minimum([5, 6, -1, 2]))
+print(find_minimum([6, 58, 2,4,69,67,5,1,3]))
