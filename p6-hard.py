@@ -46,15 +46,12 @@ class XorLinkedList:
             self.root.both = get_pointer(self.tail) ^ get_pointer(None)
 
         else:
-            # from tail both field calculate the previous address
-            #  just xor the both field of tail with new node as when it was created the next was pointed to 0/None
             temp = XorNode(element, None, self.tail.both)
             self.tail.both = self.tail.both ^ get_pointer(temp)
             self.tail = temp
 
     def get(self, element):
-        # get pevious and next pointer from both field
-        next, prev = get_prev_next(dereference_pointer(0), self.root, True)
+        next_node, prev = get_prev_next(dereference_pointer(0), self.root, True)
         current = self.root
 
         while True:
@@ -62,8 +59,8 @@ class XorLinkedList:
                 return -1
 
             if current.val == element:
-                return next
+                return current
 
-            temp = next
-            next, prev = get_prev_next(dereference_pointer(current), next)
+            temp = next_node
+            next_node, prev = get_prev_next(dereference_pointer(current), next_node)
             current = temp
