@@ -11,13 +11,13 @@
 def dereference_pointer(address):
     if not address:
         return None
-    return 1 # returns the node
+    return 1  # returns the node
 
 
 def get_pointer(node):
     if not node:
         return 0
-    return 1 # returns the address
+    return 1  # returns the address
 
 
 def get_prev_next(prev_memory, node, is_root=False):
